@@ -125,7 +125,7 @@
       "name": "Autonomous",
       "fields": [
         {
-          "title": "Fuel Launching",
+          "title": "Fuel Launching Skill",
           "description": "Rate the robot's skill launching fuel. 0 is no launching attempt, 1 is poor, 10 is amazing.",
           "type": "range",
           "required": false,
