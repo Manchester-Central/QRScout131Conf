@@ -125,63 +125,32 @@
       "name": "Autonomous",
       "fields": [
         {
-          "title": "Fuel Scored",
-          "description": "Approximate fuel scored during autonomous.",
-          "type": "multi-counter",
+          "title": "Fuel Launching",
+          "description": "Rate the robot's skill launching fuel. 0 is no launching attempt, 1 is poor, 10 is amazing.",
+          "type": "range",
           "required": false,
-          "code": "autoFuelScored",
+          "code": "autoFuel",
           "formResetBehavior": "reset",
-          "defaultValue": 0
+          "defaultValue": 0,
+          "min": 0,
+          "max": 10,
+          "step": 1
         },
         {
-          "title": "Actions",
-          "description": "Track actions performed during autonomous.",
-          "type": "action-tracker",
+          "title": "Auto Pathing",
+          "description": "What did the robot do during Auto.",
+          "type": "multi-select",
           "required": false,
-          "code": "autoActions",
+          "code": "autoPath",
           "formResetBehavior": "reset",
-          "defaultValue": null,
-          "mode": "hold",
-          "actions": [
-            {
-              "label": "Scoring",
-              "code": "scoring"
-            },
-            {
-              "label": "Ground Collect",
-              "code": "ground_collect"
-            },
-            {
-              "label": "Outpost Collect",
-              "code": "outpost_collect"
-            },
-            {
-              "label": "Depot Collect",
-              "code": "depot_collect"
-            },
-            {
-              "label": "Passing",
-              "code": "passing"
-            },
-            {
-              "label": "Climbing",
-              "code": "climbing"
-            },
-            {
-              "label": "Bump",
-              "code": "bump"
-            },
-            {
-              "label": "Trench",
-              "code": "trench"
-            },
-            {
-              "label": "Faffing & Stuck",
-              "code": "faffing"
-            }
-          ],
-          "timerDuration": 15,
-          "autoStopSeconds": 25
+          "choices": {
+            "none": "Nothing",
+            "hp": "Human Player",
+            "home": "Stayed on Alliance Side",
+            "mid": "Went to Middle",
+            "midtake": "Intake in Middle",
+            "middisrupt": "Disrupted balls in center (no intake)"
+          }
         },
         {
           "title": "Climbed",
@@ -195,7 +164,6 @@
             "No": "No Climb",
             "Yes": "Climb",
             "F": "Failed Climb"
-          }
         },
         {
           "title": "Where Climbed",
@@ -226,65 +194,6 @@
     {
       "name": "Teleop",
       "fields": [
-        {
-          "title": "Fuel Scored",
-          "description": "Approximate fuel scored during teleop.",
-          "type": "multi-counter",
-          "required": false,
-          "code": "teleopFuelScored",
-          "formResetBehavior": "reset",
-          "defaultValue": 0
-        },
-        {
-          "title": "Actions",
-          "description": "Track actions performed during teleop.",
-          "type": "action-tracker",
-          "required": false,
-          "code": "teleopActions",
-          "formResetBehavior": "reset",
-          "defaultValue": null,
-          "mode": "hold",
-          "actions": [
-            {
-              "label": "Scoring",
-              "code": "scoring"
-            },
-            {
-              "label": "Collecting",
-              "code": "collectin"
-            },
-            {
-              "label": "Passing",
-              "code": "passing"
-            },
-            {
-              "label": "Climbing",
-              "code": "climbing"
-            },
-            {
-              "label": "Alliance Zone",
-              "code": "alliance_zone"
-            },
-            {
-              "label": "Neutral Zone",
-              "code": "neutral_zone"
-            },
-            {
-              "label": "Faffing & Stuck",
-              "code": "faffing"
-            },
-            {
-              "label": "Opponent Zone",
-              "code": "opponent_zone"
-            },
-            {
-              "label": "Defense",
-              "code": "defense"
-            }
-          ],
-          "timerDuration": 135,
-          "autoStopSeconds": 150
-        },
         {
           "title": "Defended by opponent?",
           "description": "Was the robot defended by an opponent during the match?",
