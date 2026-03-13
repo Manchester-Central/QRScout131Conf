@@ -9,21 +9,21 @@
   },
   "theme": {
     "light": {
-      "background": "0 0% 100%",
+      "background": "139.57 70.77% 16.47%",
       "foreground": "0 0% 3.9%",
-      "card": "0 0% 100%",
+      "card": "141 20.1% 70.2%",
       "card_foreground": "0 0% 3.9%",
       "popover": "0 0% 100%",
       "popover_foreground": "0 0% 3.9%",
-      "primary": "354.44 71.3% 47.9%",
+      "primary": "24.24 100% 50%",
       "primary_foreground": "0 85.7% 97.3%",
       "secondary": "0 0% 96.1%",
       "secondary_foreground": "0 0% 9%",
       "muted": "0 0% 96.1%",
       "muted_foreground": "0 0% 45.1%",
-      "accent": "0 0% 96.1%",
+      "accent": "24.13 100% 64.9%",
       "accent_foreground": "0 0% 9%",
-      "destructive": "0 84.2% 60.2%",
+      "destructive": "24.24 100% 50%",
       "destructive_foreground": "0 0% 98%",
       "border": "0 0% 89.8%",
       "input": "0 0% 89.8%",
@@ -164,6 +164,7 @@
             "No": "No Climb",
             "Yes": "Climb",
             "F": "Failed Climb"
+          }
         },
         {
           "title": "Where Climbed",
@@ -194,6 +195,18 @@
     {
       "name": "Teleop",
       "fields": [
+        {
+          "title": "Fuel Launching Skill",
+          "description": "Rate the robot's skill launching fuel. 0 is no launching attempt, 1 is poor, 10 is amazing.",
+          "type": "range",
+          "required": false,
+          "code": "teleFuel",
+          "formResetBehavior": "reset",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 10,
+          "step": 1
+        },
         {
           "title": "Defended by opponent?",
           "description": "Was the robot defended by an opponent during the match?",
@@ -227,6 +240,15 @@
           "type": "boolean",
           "required": false,
           "code": "tipped",
+          "formResetBehavior": "reset",
+          "defaultValue": false
+        },
+        {
+          "title": "Fouls",
+          "description": "Did the robot cause fouls",
+          "type": "boolean",
+          "required": false,
+          "code": "foul",
           "formResetBehavior": "reset",
           "defaultValue": false
         }
@@ -265,6 +287,20 @@
             "Mid": "Middle",
             "Dep": "Depot Side"
           }
+        },
+        {
+          "title": "Climb Position",
+          "description": "Where on the tower did the robot climb?",
+          "type": "select",
+          "required": false,
+          "code": "climbPos2",
+          "formResetBehavior": "reset",
+          "defaultValue": "No",
+          "choices": {
+            "No": "No Climb",
+            "Front": "Front of Ladder",
+            "Back": "Back of Ladder"
+          }
         }
       ]
     },
@@ -278,9 +314,9 @@
           "required": false,
           "code": "scoringEff",
           "formResetBehavior": "reset",
-          "defaultValue": 3,
+          "defaultValue": 0,
           "min": 0,
-          "max": 5,
+          "max": 10,
           "step": 1
         },
         {
@@ -306,9 +342,9 @@
           "required": false,
           "code": "passingSkill",
           "formResetBehavior": "reset",
-          "defaultValue": 3,
+          "defaultValue": 0,
           "min": 0,
-          "max": 5,
+          "max": 10,
           "step": 1
         },
         {
@@ -330,17 +366,15 @@
         {
           "title": "Passing Location?",
           "description": "Where did the robot pass?",
-          "type": "select",
+          "type": "multi-select",
           "required": false,
           "code": "passLoc",
           "formResetBehavior": "reset",
-          "defaultValue": "blank",
           "choices": {
-            "blank": "(blank)",
-            "scattered": "Scattered",
-            "intentional": "Intentional",
-            "both": "Both",
-            "none": "No passing"
+            "none": "Nothing",
+            "mid": "Middle to Home",
+            "half": "Opponent to Middle",
+            "far": "Opponent to Home"
           }
         },
         {
@@ -352,7 +386,7 @@
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
-          "max": 5,
+          "max": 10,
           "step": 1
         },
         {
