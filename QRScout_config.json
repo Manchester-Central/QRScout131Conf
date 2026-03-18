@@ -251,6 +251,24 @@
           "code": "foul",
           "formResetBehavior": "reset",
           "defaultValue": false
+        },
+        {
+          "title": "Did the robot go over the bump",
+          "description": "Was the robot defended by an opponent during the match?",
+          "type": "boolean",
+          "required": false,
+          "code": "bump",
+          "formResetBehavior": "reset",
+          "defaultValue": false
+        },
+        {
+          "title": "Did the robot go through the trench",
+          "description": "Was the robot defended by an opponent during the match?",
+          "type": "boolean",
+          "required": false,
+          "code": "trench",
+          "formResetBehavior": "reset",
+          "defaultValue": false
         }
       ]
     },
