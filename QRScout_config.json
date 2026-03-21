@@ -1,6 +1,6 @@
 {
   "title": "QRScout",
-  "page_title": "Rebuilt",
+  "page_title": "Rebuilt MABOS",
   "delimiter": "\t",
   "teamNumber": 131,
   "floatingField": {
@@ -101,13 +101,9 @@
           "formResetBehavior": "reset",
           "defaultValue": "",
           "choices": {
-            "OT": "Outpost Trench",
-            "OBFT": "Outpost Bump Favoring Trench",
-            "OBFH": "Outpost Bump Favoring Hub",
-            "H": "Hub",
-            "DBFH": "Depot Bump Favoring Hub",
-            "DBFT": "Depot Bump Favoring Trench",
-            "DT": "Depot Trench"
+            "Trench": "Trench",
+            "Bump": "Bump",
+            "Hub": "Hub"
           }
         },
         {
@@ -122,71 +118,68 @@
       ]
     },
     {
-      "name": "Autonomous",
+      "name": "Autonomous Capabilities",
       "fields": [
         {
-          "title": "Fuel Launching Skill",
-          "description": "Rate the robot's skill launching fuel. 0 is no launching attempt, 1 is poor, 10 is amazing.",
-          "type": "range",
-          "required": false,
-          "code": "autoFuel",
-          "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "min": 0,
-          "max": 10,
-          "step": 1
-        },
-        {
-          "title": "Auto Pathing",
-          "description": "What did the robot do during Auto.",
-          "type": "multi-select",
-          "required": false,
-          "code": "autoPath",
-          "formResetBehavior": "reset",
-          "choices": {
-            "none": "Nothing",
-            "hp": "Human Player",
-            "home": "Stayed on Alliance Side",
-            "mid": "Went to Middle",
-            "midtake": "Intake in Middle",
-            "middisrupt": "Disrupted balls in center (no intake)"
-          }
-        },
-        {
-          "title": "Climbed",
-          "description": "Did the robot climb during autonomous?",
-          "type": "select",
-          "required": false,
-          "code": "autoClimbed",
-          "formResetBehavior": "reset",
-          "defaultValue": "No",
-          "choices": {
-            "No": "No Climb",
-            "Yes": "Climb",
-            "F": "Failed Climb"
-          }
-        },
-        {
-          "title": "Where Climbed",
-          "description": "Where on the tower did the robot climb in autonomous?",
-          "type": "select",
-          "required": false,
-          "code": "autoClimbPos",
-          "formResetBehavior": "reset",
-          "defaultValue": "No",
-          "choices": {
-            "No": "No Climb",
-            "Out": "Output Side",
-            "Mid": "Middle",
-            "Dep": "Depot Side"
-          }
-        },
-        {
-          "title": "Alliance won auto?",
-          "description": "Did your alliance win the autonomous period?",
+          "title": "Did nothing",
+          "description": "The robot didn't move in Auto",
           "type": "boolean",
           "required": false,
-          "code": "allianceWonAuto",
+          "code": "autoNothing",
+          "formResetBehavior": "reset",
+          "defaultValue": false
+        },
+        {
+          "title": "Preload",
+          "description": "Robot shot its preloaded balls",
+          "type": "boolean",
+          "required": false,
+          "code": "autoPreload",
+          "formResetBehavior": "reset",
+          "defaultValue": false
+        },
+        {
+          "title": "Outpost",
+          "description": "Robot got pieces from Outpost (Human Player)",
+          "type": "boolean",
+          "required": false,
+          "code": "autoOutpost",
+          "formResetBehavior": "reset",
+          "defaultValue": false
+        },
+        {
+          "title": "Depot",
+          "description": "Robot got pieces from the Depot",
+          "type": "boolean",
+          "required": false,
+          "code": "autoDepot",
+          "formResetBehavior": "reset",
+          "defaultValue": false
+        },
+        {
+          "title": "1st trip to centerline",
+          "description": "Robot got pieces from the center once",
+          "type": "boolean",
+          "required": false,
+          "code": "autoCL1",
+          "formResetBehavior": "reset",
+          "defaultValue": false
+        },
+        {
+          "title": "2nd trip to centerline",
+          "description": "Robot got pieces from the center second time",
+          "type": "boolean",
+          "required": false,
+          "code": "autoCL2",
+          "formResetBehavior": "reset",
+          "defaultValue": false
+        },
+        {
+          "title": "3rd trip to centerline",
+          "description": "Robot got pieces from the center third time",
+          "type": "boolean",
+          "required": false,
+          "code": "autoCL3",
           "formResetBehavior": "reset",
           "defaultValue": false
         }
@@ -196,61 +189,53 @@
       "name": "Teleop",
       "fields": [
         {
-          "title": "Fuel Launching Skill",
-          "description": "Rate the robot's skill launching fuel. 0 is no launching attempt, 1 is poor, 10 is amazing.",
-          "type": "range",
+          "title": "Scoring Cycles",
+          "description": "How many times did the robot score",
+          "type": "counter",
           "required": false,
-          "code": "teleFuel",
+          "code": "fuelCycles",
           "formResetBehavior": "reset",
           "defaultValue": 0,
-          "min": 0,
-          "max": 10,
           "step": 1
         },
         {
-          "title": "Defended by opponent?",
-          "description": "Was the robot defended by an opponent during the match?",
-          "type": "boolean",
+          "title": "Scoring Accuracy",
+          "description": "Rate the robot's scoring effectiveness.",
+          "type": "range",
           "required": false,
-          "code": "robotDefended",
+          "code": "scoringAcc",
           "formResetBehavior": "reset",
-          "defaultValue": false
+          "defaultValue": 0,
+          "min": 1,
+          "max": 4,
+          "step": 1
         },
         {
-          "title": "Mechanical Issue?",
-          "description": "Did the robot have a mechanical issue during the match?",
-          "type": "boolean",
+          "title": "Agility",
+          "description": "Rate the robot's ability to navigate the field.",
+          "type": "range",
           "required": false,
-          "code": "mechIssue",
+          "code": "agility",
           "formResetBehavior": "reset",
-          "defaultValue": false
+          "defaultValue": 0,
+          "min": 1,
+          "max": 4,
+          "step": 1
         },
         {
-          "title": "Died?",
-          "description": "Did the robot die during the match?",
-          "type": "boolean",
-          "required": false,
-          "code": "died",
+          "title": "Incapacitated",
+          "description": "Died/Disabled/Broke/Fell over",
+          "type": "select",
+          "required": true,
+          "code": "broke",
           "formResetBehavior": "reset",
-          "defaultValue": false
-        },
-        {
-          "title": "Tipped/Fell Over",
-          "description": "Did the robot tip or fall over during the match?",
-          "type": "boolean",
-          "required": false,
-          "code": "tipped",
-          "formResetBehavior": "reset",
-          "defaultValue": false
-        },
-        {
-          "title": "Fouls",
-          "description": "Did the robot cause fouls",
-          "type": "boolean",
-          "required": false,
-          "code": "foul",
-          "formResetBehavior": "reset",
-          "defaultValue": false
+          "defaultValue": "blank",
+          "choices": {
+            "no": "Robot functioned the whole match",
+            "early": "Early in the match",
+            "mid": "Middle of match",
+            "end": "End of match"
+          }
         },
         {
           "title": "Did the robot go over the bump",
@@ -260,65 +245,6 @@
           "code": "bump",
           "formResetBehavior": "reset",
           "defaultValue": false
-        },
-        {
-          "title": "Did the robot go through the trench",
-          "description": "Was the robot defended by an opponent during the match?",
-          "type": "boolean",
-          "required": false,
-          "code": "trench",
-          "formResetBehavior": "reset",
-          "defaultValue": false
-        }
-      ]
-    },
-    {
-      "name": "Endgame",
-      "fields": [
-        {
-          "title": "Climbed",
-          "description": "The level the robot climbed during endgame.",
-          "type": "select",
-          "required": true,
-          "code": "climbed",
-          "formResetBehavior": "reset",
-          "defaultValue": "No",
-          "choices": {
-            "No": "No Climb",
-            "L1": "Level 1",
-            "L2": "Level 2",
-            "L3": "Level 3",
-            "F": "Failed Climb"
-          }
-        },
-        {
-          "title": "Where Climbed",
-          "description": "Where on the tower did the robot climb?",
-          "type": "select",
-          "required": false,
-          "code": "climbPos",
-          "formResetBehavior": "reset",
-          "defaultValue": "No",
-          "choices": {
-            "No": "No Climb",
-            "Out": "Output Side",
-            "Mid": "Middle",
-            "Dep": "Depot Side"
-          }
-        },
-        {
-          "title": "Climb Position",
-          "description": "Where on the tower did the robot climb?",
-          "type": "select",
-          "required": false,
-          "code": "climbPos2",
-          "formResetBehavior": "reset",
-          "defaultValue": "No",
-          "choices": {
-            "No": "No Climb",
-            "Front": "Front of Ladder",
-            "Back": "Back of Ladder"
-          }
         }
       ]
     },
@@ -326,99 +252,31 @@
       "name": "Postmatch",
       "fields": [
         {
-          "title": "Scoring Effectiveness",
-          "description": "Rate the robot's scoring effectiveness.",
-          "type": "range",
+          "title": "Passing",
+          "description": "Robot launched pieces to their side",
+          "type": "boolean",
           "required": false,
-          "code": "scoringEff",
+          "code": "passing",
           "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "min": 0,
-          "max": 10,
-          "step": 1
+          "defaultValue": false
         },
         {
-          "title": "Scored How?",
-          "description": "How did the robot score?",
-          "type": "select",
+          "title": "Plowing",
+          "description": "Robot plowed pieces to their side",
+          "type": "boolean",
           "required": false,
-          "code": "scoredHow",
+          "code": "plowing",
           "formResetBehavior": "reset",
-          "defaultValue": "blank",
-          "choices": {
-            "blank": "(blank)",
-            "driving": "While driving",
-            "stationary": "While stationary",
-            "both": "Both",
-            "none": "No scoring"
-          }
+          "defaultValue": false
         },
         {
-          "title": "Passing Skill",
-          "description": "Rate the robot's passing skill.",
-          "type": "range",
+          "title": "Defense",
+          "description": "Robot played defense",
+          "type": "boolean",
           "required": false,
-          "code": "passingSkill",
+          "code": "defense",
           "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "min": 0,
-          "max": 10,
-          "step": 1
-        },
-        {
-          "title": "Passed How?",
-          "description": "How did the robot pass?",
-          "type": "select",
-          "required": false,
-          "code": "passedHow",
-          "formResetBehavior": "reset",
-          "defaultValue": "blank",
-          "choices": {
-            "blank": "(blank)",
-            "driving": "While driving",
-            "stationary": "While stationary",
-            "both": "Both",
-            "none": "No Passing"
-          }
-        },
-        {
-          "title": "Passing Location?",
-          "description": "Where did the robot pass?",
-          "type": "multi-select",
-          "required": false,
-          "code": "passLoc",
-          "formResetBehavior": "reset",
-          "choices": {
-            "none": "Nothing",
-            "mid": "Middle to Home",
-            "half": "Opponent to Middle",
-            "far": "Opponent to Home"
-          }
-        },
-        {
-          "title": "Defense Skill",
-          "description": "Rate the robot's defensive skill.",
-          "type": "range",
-          "required": false,
-          "code": "defSkill",
-          "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "min": 0,
-          "max": 10,
-          "step": 1
-        },
-        {
-          "title": "Yellow/Red Card",
-          "type": "select",
-          "required": true,
-          "code": "yc",
-          "formResetBehavior": "reset",
-          "defaultValue": "No Card",
-          "choices": {
-            "No Card": "No Card",
-            "Yellow": "Yellow Card",
-            "Red": "Red Card"
-          }
+          "defaultValue": false
         },
         {
           "title": "Comments",
