@@ -224,7 +224,7 @@
         },
         {
           "title": "Incapacitated",
-          "description": "Died/Disabled/Broke/Fell over",
+          "description": "Died/Disabled/Broke/Fell over/Beached",
           "type": "select",
           "required": true,
           "code": "broke",
