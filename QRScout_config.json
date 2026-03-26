@@ -239,7 +239,7 @@
         },
         {
           "title": "Did the robot go over the bump",
-          "description": "Was the robot defended by an opponent during the match?",
+          "description": "Did the robot go over the bump at any point in the match?",
           "type": "boolean",
           "required": false,
           "code": "bump",
