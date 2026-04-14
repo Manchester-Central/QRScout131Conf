@@ -1,6 +1,6 @@
 {
   "title": "QRScout",
-  "page_title": "Rebuilt MABOS",
+  "page_title": "Rebuilt NEDCMP1",
   "delimiter": "\t",
   "teamNumber": 131,
   "floatingField": {
@@ -189,16 +189,6 @@
       "name": "Teleop",
       "fields": [
         {
-          "title": "Scoring Cycles",
-          "description": "How many times did the robot score",
-          "type": "counter",
-          "required": false,
-          "code": "fuelCycles",
-          "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "step": 1
-        },
-        {
           "title": "Scoring Accuracy",
           "description": "Rate the robot's scoring effectiveness.",
           "type": "range",
@@ -238,7 +228,7 @@
           }
         },
         {
-          "title": "Did the robot go over the bump",
+          "title": "Did the robot go over the bump?",
           "description": "Did the robot go over the bump at any point in the match?",
           "type": "boolean",
           "required": false,
